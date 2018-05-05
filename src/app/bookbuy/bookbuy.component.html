@@ -1,0 +1,19 @@
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<section *ngIf="book" class = "panel-body">
+    <form (ngSubmit)="saveBuy()" #bookbuyForm="ngForm" class="panel-body">
+      <div class="input-group">
+        <span class="input-group-addon">Name</span> 
+        <input type="text" class = "form-control" name="bookname" required [(ngModel)]="book.name" #bookname="ngModel">
+      </div>
+      <div [hidden]="bookname.valid || bookname.pristine" class="error">
+          Name cannot be empty.
+      </div>		
+      <br/>
+      <button type="submit" [disabled]="!bookbuyForm.form.valid" class = "btn">Save</button>
+    </form>
+</section>
+<section *ngIf="errorMessage" class = "error">{{errorMessage}}</section>

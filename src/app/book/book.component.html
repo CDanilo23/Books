@@ -1,0 +1,31 @@
+
+<br>
+<br>
+<br>
+<br>
+<section *ngIf="books" class = "panel-body">
+	<input type="text" [(ngModel)]="term">
+	<table class = "table-striped table-bordered table-hover table-condensed">
+			<thead>
+					<tr>
+						<td>Nombre</td>
+						<td>Descripcion</td>
+						<td>valor</td>
+					</tr>
+			</thead>
+		<tr *ngFor="let book of books |filter:term">
+			<td>
+        <a href="#" [routerLink]="['/book', book.id]">{{book.name}} </a>&nbsp;&nbsp;
+			</td>
+			<td>
+        <a>{{book.description}} </a>&nbsp;&nbsp;
+			</td>
+			<td>
+					<a>{{book.value}} </a>&nbsp;&nbsp;
+				</td>
+			<td>
+					<a  class="nav-link" href="#" [routerLink]="['/books/bookbuy', book.id]">Buy </a>&nbsp;&nbsp;
+       <!-- <a class="nav-link" routerLink="bookbuy">Buy </a>-->
+      </td>
+	</table>
+</section>
