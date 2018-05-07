@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class BooklistComponent implements OnInit {
 
   books: Book[] = [];
+  buybooks: Book[] = [];
+  recentBook: "None";
 
   constructor(private bookService: BookService, private router: Router) { }
 
@@ -20,5 +22,14 @@ export class BooklistComponent implements OnInit {
       console.log(this.books);
     });
   }
+  
+  selectedBook(book){
+    this.recentBook = book;
+    this.buybooks.push(book);
+    console.log(book.name + " Was added to car");
+  }
 
+  redirectToBuy(){
+    this.router.navigate(['/books/bookbuy', '1']);
+  }
 }

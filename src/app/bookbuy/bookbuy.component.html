@@ -5,9 +5,17 @@
 <br/>
 <section *ngIf="book" class = "panel-body">
     <form (ngSubmit)="saveBuy()" #bookbuyForm="ngForm" class="panel-body">
-      <div class="input-group">
-        <span class="input-group-addon">Name</span> 
-        <input type="text" class = "form-control" name="bookname" required [(ngModel)]="book.name" #bookname="ngModel">
+      <div class="form-group">
+        <fieldset disabled="">
+          <label class="control-label" for="disabledInput">Name</label>
+          <input class="form-control" id="disabledInput" type="text" name="bookname" required [(ngModel)]="book.name" #bookname="ngModel">
+       </fieldset>
+      </div>
+      <div class="form-group">
+
+            <label class="control-label" >Customer</label>
+            <input class="form-control" type="text" name="customerName" required [(ngModel)]="book.name" #bookname="ngModel">
+
       </div>
       <div [hidden]="bookname.valid || bookname.pristine" class="error">
           Name cannot be empty.

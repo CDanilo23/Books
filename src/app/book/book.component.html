@@ -1,31 +1,45 @@
+<br>
+<br>
+<br>
+<br>
 
-<br>
-<br>
-<br>
-<br>
-<section *ngIf="books" class = "panel-body">
-	<input type="text" [(ngModel)]="term">
-	<table class = "table-striped table-bordered table-hover table-condensed">
+<section *ngIf="books" class="panel-body">
+
+	<div id="content2">
+
+		<input type="text" [(ngModel)]="term">
+		<table class="table table-hover">
 			<thead>
-					<tr>
-						<td>Nombre</td>
-						<td>Descripcion</td>
-						<td>valor</td>
-					</tr>
+				<tr>
+					<th scope="col">Nombre</th>
+					<th scope="col">Descripcion</th>
+					<th scope="col">valor</th>
+				</tr>
 			</thead>
-		<tr *ngFor="let book of books |filter:term">
-			<td>
-        <a href="#" [routerLink]="['/book', book.id]">{{book.name}} </a>&nbsp;&nbsp;
-			</td>
-			<td>
-        <a>{{book.description}} </a>&nbsp;&nbsp;
-			</td>
-			<td>
-					<a>{{book.value}} </a>&nbsp;&nbsp;
-				</td>
-			<td>
-					<a  class="nav-link" href="#" [routerLink]="['/books/bookbuy', book.id]">Buy </a>&nbsp;&nbsp;
-       <!-- <a class="nav-link" routerLink="bookbuy">Buy </a>-->
-      </td>
-	</table>
+			<tbody>
+				<tr class="table-active" *ngFor="let book of books |filter:term">
+					<td>
+						<a href="#" [routerLink]="['/book', book.id]">{{book.name}} </a>
+					</td>
+					<td>
+						<a>{{book.description}} </a>
+					</td>
+					<td>
+						<a>{{book.value}} </a>
+					</td>
+					<td align="center">
+						<!--<a class="nav-link" href="#" [routerLink]="['/books/bookbuy', book.id]">Buy </a>-->
+						<button class="btn btn-primary" type="button" (click)="selectedBook(book)">Buy</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="content1" *ngIf="buybooks.length > 0">
+			<ul class="list-group">
+					<li *ngFor="let item of buybooks" class="list-group-item d-flex justify-content-between align-items-center">{{item.name}}</li>
+			</ul>	
+			<button type="button" (click) = "redirectToBuy()" >Finish Buy</button>	
+	</div>
+
 </section>
